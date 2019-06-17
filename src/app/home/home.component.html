@@ -1,0 +1,11 @@
+<br />
+<input type="text" [(ngModel)]="args" placeholder="Buscar">
+<br />
+<h3>Amigos</h3>
+<ng-container *ngFor="let user of friends | search: args">
+  <div>
+    <a routerLink="/chat/{{user.uid}}">
+      {{ user.nick }} - {{ user.email }}
+    </a>
+  </div>
+</ng-container>
