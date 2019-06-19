@@ -1,12 +1,32 @@
 <div class="chat4-login-container">
   <div class="chat4-login-auth" style="background-color: #bbdefb;">
     <div class="col-12">
-      hola
+      <div class="chat4-login-container text-center">
+        <div class="">
+          <h3>Log In</h3>
+          <small>Or <a href="">Create Account</a></small>
+        </div>
+        <form class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email" [errorStateMatcher]="matcher">
+            <!-- <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error> -->
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Password">
+          </mat-form-field>
+          <button (click)='logIn()' class="example-full-width" mat-raised-button color="primary">Primary</button>
+          <small><a href="">Forgot Login</a></small>
+        </form>
+      </div>
     </div>
   </div>
   <div class="chat4-login-description" style="background-color: #eeffff">
     <div class="col-12">
-      fuerals
     </div>
   </div>
 </div>
