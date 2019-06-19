@@ -7,31 +7,19 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ChatComponent } from './chat/chat.component';
 import { ProfileComponent } from './profile/profile.component';
-
-import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 
 import { SearchPipe } from './pipes/search';
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'chat/:uid', component: ChatComponent },
-  { path: 'profile', component: ProfileComponent}
-];
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialComponentsModule } from './material.module';
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  declarations: [MenuComponent]
-})
-export class AppRoutingModule {}
+import { AppRoutingModule } from './app.routing';
+import 'hammerjs';
 
 const Pipes = [
   SearchPipe
 ];
-
 
 @NgModule({
   declarations: [
@@ -46,7 +34,9 @@ const Pipes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule,
+    MaterialComponentsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

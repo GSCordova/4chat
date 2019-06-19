@@ -1,0 +1,12 @@
+.chat4-login-container{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    .chat4-login-auth {
+        width: 40%;
+    }
+    .chat4-login-description {
+        flex: 1;
+    }
+}
+

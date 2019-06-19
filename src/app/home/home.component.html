@@ -1,3 +1,13 @@
+<mat-toolbar class="chat4-toolbar" color="primary">
+    <mat-toolbar-row>
+        <span [routerLink]="[ '/home' ]">Home</span>
+        <span [routerLink]="[ '/login' ]">Login</span>
+        <span [routerLink]="[ '/chat' ]">Chat</span>
+        <span class="chat4-spacer"></span>
+        <mat-icon [routerLink]="[ '/profile' ]" class="chat4-menu-icon" aria-hidden="false" aria-label="Example delete icon">account_circle</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <br />
 <input type="text" [(ngModel)]="args" placeholder="Buscar">
 <br />
