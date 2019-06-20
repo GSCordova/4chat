@@ -3,6 +3,8 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup } from '
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
+import { User } from '../intefaces/user';
 
 @Component({
   selector: 'app-login',
@@ -11,32 +13,49 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 export class LoginComponent {
 
+  loginState = 'register';
   email: string = null;
   password: string = null;
-
+  nick: string = null;
+  friends: User[];
+  hide = true;
+  manolo = true;
   matcher = new MyErrorStateMatcher();
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService,
+    private userService: UserService) { }
 
   public logIn() {
     this.authenticationService.loginWithEmail(this.email, this.password).then((data) => {
-      alert('Log correct');
+      alert('Logeado Correctamente');
       console.log('Data : ', data);
     }).catch((error) => {
-      alert('Log error');
+      alert('Ha ocurrido un error');
       console.log('Data : ', error);
     });
   }
 
   public register() {
     this.authenticationService.registerWithEmail(this.email, this.password).then((data) => {
-      alert('Register correct');
-      console.log('Data : ', data);
+      const user = {
+        uid: data.user.uid,
+        email: this.email,
+        nick: this.nick
+      };
+
+      this.router.navigate(['home']);
+
+      this.userService.createUser(user).then((data2) => {
+        alert('Register correct');
+        console.log('Data : ', data2);
+      }).catch((error2) => {
+        console.log('Error2 ', error2);
+      });
+
     }).catch((error) => {
-      alert('Register error');
-      console.log('Data : ', error);
+      console.log('Error: ', error);
     });
   }
 

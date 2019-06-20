@@ -1,32 +1,36 @@
 <div class="chat4-login-container">
   <div class="chat4-login-auth" style="background-color: #bbdefb;">
     <div class="col-12">
-      <div class="chat4-login-container text-center">
-        <div class="">
-          <h3>Log In</h3>
-          <small>Or <a href="">Create Account</a></small>
+      <div class="chat4-login-body text-center">
+        <div class="chat4-login-title">
+          <h3 *ngIf="loginState === 'login'">Iniciar Sesión</h3>
+          <h3 *ngIf="loginState === 'register'">Registrarse</h3>
+          <small>
+            <a *ngIf="loginState === 'register'" (click)="loginState = 'login'">Ya tienes cuenta? Inicia Sesión</a>
+            <a *ngIf="loginState === 'login'" (click)="loginState = 'register'">No tienes cuenta? Regístrate</a>
+          </small>
         </div>
         <form class="example-form">
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Email" [errorStateMatcher]="matcher">
-            <!-- <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error> -->
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error> -->
+          <mat-form-field [color]="'warn'" appearance="fill" class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="email" name="email" matInput placeholder="" [errorStateMatcher]="matcher">
           </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput placeholder="Password">
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input [(ngModel)]="password" name="password" matInput [type]="hide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
           </mat-form-field>
-          <button (click)='logIn()' class="example-full-width" mat-raised-button color="primary">Primary</button>
-          <small><a href="">Forgot Login</a></small>
+          <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Nick</mat-label>
+            <input [(ngModel)]="nick" name="nick" matInput placeholder="">
+          </mat-form-field>
+          <button *ngIf=" loginState === 'login' " (click)='logIn()' class="example-full-width" mat-raised-button color="primary">Iniciar Sesión</button>
+          <button *ngIf=" loginState === 'register' " (click)='register()' class="example-full-width" mat-raised-button color="primary">Registrarse</button>
+          <small *ngIf="loginState === 'login'"><a href="">¿Olvidaste tu contraseña?</a></small>
         </form>
       </div>
-    </div>
-  </div>
-  <div class="chat4-login-description" style="background-color: #eeffff">
-    <div class="col-12">
     </div>
   </div>
 </div>

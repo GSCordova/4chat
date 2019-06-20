@@ -11,22 +11,24 @@ import { UserService } from '../services/user.service';
 export class ChatComponent implements OnInit {
 
   friendId: number;
-  friends: User[];
+  friend: User;
   param = 'uid';
-  friend: any;
 
-  constructor(private activateRoute: ActivatedRoute, private userService: UserService) {
-    this.friends = this.userService.getFriends();
+  constructor(
+    private activateRoute: ActivatedRoute,
+    private userService: UserService) {
     this.friendId = this.activateRoute.snapshot.params[this.param];
-
-    this.friend = this.getUserById(this.friendId);
-
+    this.userService.getUserById(this.friendId).valueChanges().subscribe(
+      (data: User) => {
+        this.friend = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   ngOnInit() {}
 
-  getUserById(friendId: number) {
-    return this.friends.find(friend => friend.uid == friendId);
-  }
 
 }

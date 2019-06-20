@@ -7,14 +7,21 @@
         align-items: center;
         flex: 1;
     }
-    .chat4-login-description {
-        width: 55%;
+    .chat4-login-title {
+        width: 100%;
+        padding: 15px 32px;
     }
-    .chat4-login-container {
+    .chat4-login-description {
+        width: 50%;
+    }
+    .chat4-login-body {
+        width: 376px;
         margin: 0 auto;
-        width: 60%;
         flex-direction: column;
-        align-items: center;
+            align-items: center;
+    }
+    button {
+        height: 46px;
     }
 }
 
@@ -22,7 +29,7 @@
 .example-form {
     min-width: 150px;
     max-width: 500px;
-    width: 100%;
+    padding: 0 32px 35px 32px;
   }
   
   .example-full-width {
