@@ -31,6 +31,7 @@ export class LoginComponent {
     this.authenticationService.loginWithEmail(this.email, this.password).then((data) => {
       alert('Logeado Correctamente');
       console.log('Data : ', data);
+      this.router.navigate(['home']);
     }).catch((error) => {
       alert('Ha ocurrido un error');
       console.log('Data : ', error);
