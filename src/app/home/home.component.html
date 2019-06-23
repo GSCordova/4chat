@@ -1,15 +1,16 @@
 <mat-toolbar class="chat4-toolbar" color="primary">
     <mat-toolbar-row>
-        <span [routerLink]="[ '/home' ]">Home</span>
-        <span [routerLink]="[ '/login' ]">Login</span>
-        <span [routerLink]="[ '/chat' ]">Chat</span>
+        <!-- <span [routerLink]="[ '/home' ]">Home</span> -->
+        <!-- <span [routerLink]="[ '/login' ]">Login</span> -->
+        <!-- <span [routerLink]="[ '/chat' ]">Chat</span> -->
         <span class="chat4-spacer"></span>
-        <mat-icon [routerLink]="[ '/profile' ]" class="chat4-menu-icon" aria-hidden="false" aria-label="Example delete icon">account_circle</mat-icon>
-    </mat-toolbar-row>
+        <mat-icon [matMenuTriggerFor]="menu" class="chat4-menu-icon" aria-hidden="false" aria-label="Example delete icon">settings</mat-icon>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="[ '/profile' ]">Mi Perfil</button>
+          <button mat-menu-item (click)="logut()">Cerrar Sesión</button>
+        </mat-menu>
+      </mat-toolbar-row>
 </mat-toolbar>
-
-<p>prueba</p>
-<button (click)="logut()">logout</button>
 
 <br />
 <input type="text" [(ngModel)]="args" placeholder="Buscar">

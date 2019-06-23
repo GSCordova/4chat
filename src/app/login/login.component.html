@@ -1,14 +1,10 @@
 <div class="chat4-login-container">
-  <div class="chat4-login-auth" style="background-color: #bbdefb;">
+  <div class="chat4-login-auth" style="background-color: aliceblue;">
     <div class="col-12">
       <div class="chat4-login-body text-center">
         <div class="chat4-login-title">
           <h3 *ngIf="loginState === 'login'">Iniciar Sesión</h3>
           <h3 *ngIf="loginState === 'register'">Registrarse</h3>
-          <small>
-            <a *ngIf="loginState === 'register'" (click)="loginState = 'login'">Ya tienes cuenta? Inicia Sesión</a>
-            <a *ngIf="loginState === 'login'" (click)="loginState = 'register'">No tienes cuenta? Regístrate</a>
-          </small>
         </div>
         <form class="example-form">
           <mat-form-field [color]="'warn'" appearance="fill" class="example-full-width">
@@ -22,13 +18,20 @@
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
           </mat-form-field>
-          <mat-form-field appearance="fill" class="example-full-width">
+          <mat-form-field *ngIf=" loginState === 'register' " appearance="fill" class="example-full-width">
             <mat-label>Nick</mat-label>
             <input [(ngModel)]="nick" name="nick" matInput placeholder="">
           </mat-form-field>
-          <button *ngIf=" loginState === 'login' " (click)='logIn()' class="example-full-width" mat-raised-button color="primary">Iniciar Sesión</button>
-          <button *ngIf=" loginState === 'register' " (click)='register()' class="example-full-width" mat-raised-button color="primary">Registrarse</button>
-          <small *ngIf="loginState === 'login'"><a href="">¿Olvidaste tu contraseña?</a></small>
+          <button *ngIf=" loginState === 'login' " (click)='logIn()' class="example-full-width" mat-raised-button color="primary">Entrar</button>
+          <button *ngIf=" loginState === 'register' " (click)='register()' class="example-full-width" mat-raised-button color="primary">Siguiente</button>
+          <small>
+            <span *ngIf="loginState === 'register'">¿Ya tienes cuenta? 
+              <a (click)="loginState = 'login'">Inicia Sesión</a>
+            </span>
+            <span *ngIf="loginState === 'login'">¿No tienes cuenta?
+              <a (click)="loginState = 'register'">Regístrate</a>
+            </span>
+          </small>
         </form>
       </div>
     </div>

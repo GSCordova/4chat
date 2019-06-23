@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Gothic+A1&display=swap');
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 .chat4-login-container{
+    font-family: 'Fredoka One', cursive;
     height: 100%;
     display: flex;
     flex-direction: row;
+    animation: fadein 2s;
     .chat4-login-auth {
         display: flex;
         align-items: center;
@@ -20,9 +30,18 @@
         flex-direction: column;
             align-items: center;
     }
-    button {
-        height: 46px;
+    mat-form-field {
+        font-family: 'Fredoka One', cursive;
+        input {
+            font-family: 'Gothic A1', sans-serif;
+            font-size: 14px;
+        }
     }
+
+    button {
+        font-family: 'Fredoka One', cursive;
+    }
+
 }
 
 
@@ -30,6 +49,10 @@
     min-width: 150px;
     max-width: 500px;
     padding: 0 32px 35px 32px;
+    a {
+        color: #3f51b5;
+        cursor: pointer;
+    }
   }
   
   .example-full-width {
