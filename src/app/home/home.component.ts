@@ -3,6 +3,7 @@ import { User } from '../intefaces/user';
 import { UserService } from '../services/user.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ export class HomeComponent implements OnInit {
     constructor(
       private userService: UserService,
       private authenticationService: AuthenticationService,
-      private router: Router) {
+      private router: Router,
+      private snackBar: MatSnackBar) {
         this.userService.getUsers().valueChanges().subscribe(
           (data: User[]) => {
             this.friends = data;
@@ -30,10 +32,14 @@ export class HomeComponent implements OnInit {
 
     logut() {
       this.authenticationService.logOut().then(() => {
-        alert('Logged Out');
+        this.snackBar.open('Has cerrado sesión correctamente', 'Cerrar', {
+          duration: 4000,
+        });
         this.router.navigate(['login']);
       }).catch(() => {
-        alert('cant logout');
+        this.snackBar.open('Ha ocurrido un error al intentar cerrar sesión', 'Cerrar', {
+          duration: 4000,
+        });
       });
     }
 

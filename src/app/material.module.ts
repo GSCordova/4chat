@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const Material = [
     MatToolbarModule,
@@ -12,7 +13,8 @@ const Material = [
     MatCheckboxModule,
     MatIconModule,
     MatInputModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSnackBarModule
 ];
 
 @NgModule({

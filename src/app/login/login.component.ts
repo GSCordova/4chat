@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 import { User } from '../intefaces/user';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -13,28 +14,33 @@ import { User } from '../intefaces/user';
 })
 export class LoginComponent {
 
-  loginState = 'register';
-  email: string = null;
-  password: string = null;
-  nick: string = null;
-  friends: User[];
-  hide = true;
-  manolo = true;
-  matcher = new MyErrorStateMatcher();
+  public loginState = 'login';
+  public email: string = null;
+  public password: string = null;
+  public nick: string = null;
+  public friends: User[];
+  public hide = true;
+  public manolo = true;
+  public matcher = new MyErrorStateMatcher();
 
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private snackBar: MatSnackBar) { }
 
   public logIn() {
     this.authenticationService.loginWithEmail(this.email, this.password).then((data) => {
-      alert('Logeado Correctamente');
       console.log('Data : ', data);
+      this.snackBar.open('Has iniciado sesión correctamente', 'Cerrar', {
+        duration: 4000,
+      });
       this.router.navigate(['home']);
     }).catch((error) => {
-      alert('Ha ocurrido un error');
       console.log('Data : ', error);
+      this.snackBar.open('Ha ocurrido un error al intentar iniciar sesión', 'Cerrar', {
+        duration: 4000,
+      });
     });
   }
 
