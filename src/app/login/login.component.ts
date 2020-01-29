@@ -42,6 +42,19 @@ export class LoginComponent {
         duration: 4000,
       });
     });
+	}
+	
+	public loginAnonymously() {
+		this.authenticationService.loginAnonymously().then((data) => {
+		/* this.snackBar.open('Has iniciado sesión correctamente', 'Cerrar', {
+			duration: 4000
+		}); */
+			this.router.navigate(['home']);
+	  }).catch((err) => {
+			this.snackBar.open('Ha ocurrido un error al intentar iniciar sesión', 'Cerrar', {
+			duration: 4000
+			});
+	  });
   }
 
   public register() {

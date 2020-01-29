@@ -12,6 +12,10 @@ export class AuthenticationService {
     return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
+  loginAnonymously() {
+    return this.angularFireAuth.auth.signInAnonymously();
+  }
+
   registerWithEmail(email: string, password: string) {
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
   }

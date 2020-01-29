@@ -5,7 +5,15 @@
 			<div class="col-12">
 				<div class="chat4-login-body text-center">
 					<div class="chat4-login-title">
-						<h3 *ngIf="loginState === 'login'">Iniciar Sesión</h3>
+						<button *ngIf=" loginState === 'login' " (click)='loginAnonymously()' class="example-full-width"
+							mat-raised-button color="primary">Entrar anonimamente</button>
+						
+						<!-- <h3 *ngIf="loginState === 'login'">Iniciar Sesión</h3>
+						<h3 *ngIf="loginState === 'register'">Registrarse</h3> -->
+						
+					</div>
+					<div>
+						<p *ngIf=" loginState === 'login' "><small>--- o via Email ---</small></p>	
 						<h3 *ngIf="loginState === 'register'">Registrarse</h3>
 					</div>
 					<form class="example-form">

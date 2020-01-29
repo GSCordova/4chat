@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class HomeComponent implements OnInit {
 
-    friends: User[];
+    public friends: User[];
 
     constructor(
       private userService: UserService,
